@@ -65,6 +65,29 @@ namespace EggFarmSystem.Client.Modules.MasterData.Views
         {
             UnsetEventHandlers();
         }
+
+        private void ListView_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Resize(sender);
+        }
+
+        private void ListView_Loaded(object sender, RoutedEventArgs e)
+        {
+            Resize(sender);
+        }
+
+        void Resize(object sender)
+        {
+            //ListView lvHenList = sender as ListView;
+            //GridView view = lvHenList.View as GridView;
+            //GridViewColumn column = view.Columns.Last() as GridViewColumn;
+            //double total = 0;
+            //for (int i = 0; i < view.Columns.Count - 1; i++)
+            //{
+            //    total += view.Columns[i].ActualWidth ;
+            //}
+            //column.Width = lvHenList.ActualWidth - total;
+        }
     }
 
     public interface IHenListView

@@ -8,32 +8,27 @@
              d:DesignHeight="500" d:DesignWidth="500">
     <Grid>
         <ListView x:Name="lvHenList"
-                  AlternationCount="2" ItemsSource="{Binding Path=Hens}">
+                  AlternationCount="2" ItemsSource="{Binding Path=Hens}" 
+                  HorizontalAlignment="Stretch"
+                  >
             <ListView.View>
                 <GridView x:Name="gvHenList" >
 
                     <GridView.Columns>
                         <GridViewColumn Header="{Binding Path=NameText}" DisplayMemberBinding="{Binding Path=Name}"
                                         Width="200">
-
                         </GridViewColumn>
                         <GridViewColumn Header="{Binding Path=TypeText}" DisplayMemberBinding="{Binding Path=Type}"
                                          Width="150">
-
                         </GridViewColumn>
                         <GridViewColumn Header="{Binding Path=HouseText}" DisplayMemberBinding="{Binding Path=HouseName}"
                                          Width="150">
-
                         </GridViewColumn>
-                        
                         <GridViewColumn Header="{Binding Path=CountText}" DisplayMemberBinding="{Binding Path=Count}"
                                         Width="100">
-
-                        </GridViewColumn>
-                        
+                        </GridViewColumn>                        
                         <GridViewColumn Header="{Binding Path=ActiveText}" DisplayMemberBinding="{Binding Path=Active}"
-                                        Width="75">
-
+                                        Width="75" >
                         </GridViewColumn>
                     </GridView.Columns>
 

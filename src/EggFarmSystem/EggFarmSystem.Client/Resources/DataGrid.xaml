@@ -13,9 +13,9 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
                     <Grid>
-                        <Grid.ColumnDefinitions>
+                        <!--<Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
+                        </Grid.ColumnDefinitions>-->
                         <Border BorderThickness="1" Padding="15,7,15,7" Background="{StaticResource ListHeaderBrush}" BorderBrush="#242424" Grid.Column="0">
                             
                             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -37,35 +37,39 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="DataGridRow">
-                    <Border SnapsToDevicePixels="True" Name="DGR_Border">
+                    
                         <SelectiveScrollingGrid HorizontalAlignment="Stretch" >
                             <SelectiveScrollingGrid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" /> <!--<ColumnDefinition Width="*" />-->
                             </SelectiveScrollingGrid.ColumnDefinitions>
                             <SelectiveScrollingGrid.RowDefinitions>
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="Auto" />
                             </SelectiveScrollingGrid.RowDefinitions>
-                            <DataGridCellsPresenter Grid.Column="0" ItemsPanel="{TemplateBinding ItemsPanel}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                                 <DataGridDetailsPresenter Grid.Row="1" Grid.Column="0" 
+                        <Grid Grid.Column="0" Name="Grid_As_Border">
+                            <DataGridCellsPresenter   ItemsPanel="{TemplateBinding ItemsPanel}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" >
+                                <!--<Border SnapsToDevicePixels="True" Name="DGR_Border"/> </Border>-->
+                        </DataGridCellsPresenter>
+                            <DataGridDetailsPresenter Grid.Row="1" Grid.Column="0" 
 			                        SelectiveScrollingGrid.SelectiveScrollingOrientation="{Binding AreRowDetailsFrozen,
                                     ConverterParameter={x:Static SelectiveScrollingOrientation.Vertical},Converter={x:Static DataGrid.RowDetailsScrollingConverter},RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
 			                        Visibility="{TemplateBinding DetailsVisibility}" />
-                            <DataGridRowHeader Grid.RowSpan="2" SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical"
+                        <DataGridRowHeader Grid.RowSpan="2" SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical"
 			                                   Visibility="{Binding HeadersVisibility,ConverterParameter={x:Static DataGridHeadersVisibility.Row},
                                                Converter={x:Static DataGrid.HeadersVisibilityConverter},RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
-                        </SelectiveScrollingGrid>
-                    </Border>
+                        </Grid>
+                    </SelectiveScrollingGrid>
+                    
                     <ControlTemplate.Triggers>
                         <Trigger Property="AlternationIndex" Value="0">
-                            <Setter TargetName="DGR_Border" Property="Background" Value="{StaticResource ListFirstRowBrush}"></Setter>
+                            <Setter TargetName="Grid_As_Border" Property="Background" Value="{StaticResource ListFirstRowBrush}"></Setter>
                         </Trigger>
                         <Trigger Property="AlternationIndex" Value="1">
-                            <Setter TargetName="DGR_Border" Property="Background" Value="{StaticResource ListSecondRowBrush}"></Setter>
+                            <Setter TargetName="Grid_As_Border" Property="Background" Value="{StaticResource ListSecondRowBrush}"></Setter>
                         </Trigger>
                        <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="DGR_Border" Property="Background" Value="{StaticResource ListSelectedBrush}"></Setter>
+                            <Setter TargetName="Grid_As_Border" Property="Background" Value="{StaticResource ListSelectedBrush}"></Setter>
                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -104,7 +108,7 @@
         <Setter Property="BorderBrush" Value="Transparent"></Setter>
         <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
-        <Setter Property="ColumnWidth" Value="*"></Setter>
+        <!--<Setter Property="ColumnWidth" Value="*"></Setter>-->
     </Style>    
 
 

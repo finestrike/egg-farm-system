@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Windows;
+using System.Windows.Input;
 using AutoMapper;
 using EggFarmSystem.Client.Commands;
 using EggFarmSystem.Client.Core;
@@ -11,7 +12,8 @@ using System.Linq;
 using System.Text;
 using EggFarmSystem.Resources;
 using EggFarmSystem.Services;
-using System.Windows;
+//using System.Windows;
+using MessageBox = Xceed.Wpf.Toolkit.MessageBox;
 
 namespace EggFarmSystem.Client.Modules.MasterData.ViewModels
 {
@@ -36,6 +38,7 @@ namespace EggFarmSystem.Client.Modules.MasterData.ViewModels
 
             hens = new ObservableCollection<HenListItem>();
             NavigationCommands = new List<CommandBase>() {NewCommand, DeleteCommand};
+            MessageBox.Show("Test", "test caption",MessageBoxButton.OK, MessageBoxImage.Warning);
             SubscribeMessages();
         }
 
